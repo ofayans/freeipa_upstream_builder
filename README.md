@@ -2,6 +2,7 @@
 A docker image to build freeipa packages from upstream repo with developmental patches, optionally applied on top of it
 
 In order to build the image you need to perform the following steps:
+
 1. Git clone this repo and chdir into the freeipa\_upstream\_builder folder
 2. create a .ssh folder in it with the authorized\_keys, containing the pub key
    you will use to ssh into running container.
@@ -10,6 +11,7 @@ In order to build the image you need to perform the following steps:
 3. Actually build the image: <pre><code>VERSION=\`awk '/FROM/ {print $2}' Dockerfile | sed "s/fedora://"\` ; docker build -t f${VERSION}builder .</code></pre>
 
 To use the image then do the following:
+
 1. Create the folder named FreeIPA under you home directory: and an rpm folder inside FreeIPA: mkdir -p $HOME/FreeIPA/rpms
 2. create a container with the FreeIPA folder exported to the container as a volume:
 <pre><code>docker run -P -v /path/to/folder:/data:Z f${VERSION}builder</pre></code>
