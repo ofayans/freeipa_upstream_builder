@@ -15,6 +15,7 @@ To use the image then do the following:
 1. Create the folder named FreeIPA under you home directory: and an rpm folder inside FreeIPA: mkdir -p $HOME/FreeIPA/rpms
 2. create a container with the FreeIPA folder exported to the container as a volume:
 <pre><code>docker run -P -v /path/to/folder:/data:Z f${VERSION}builder</pre></code>
+
 That's it! Now you can ssh to the container and launch /root/freeipa/build.sh
 to build the upstream code. Once the build is finished, it will create a 
 subfolder in the FreeIPA/rpms, named as fedora version of the docker image
