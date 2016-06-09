@@ -9,6 +9,8 @@ RUN dnf copr enable -y mkosek/freeipa-master
 RUN dnf copr enable -y pviktori/pytest-plugins
 RUN dnf copr enable -y simo/jwcrypto
 RUN dnf copr enable -y simo/custodia
+RUN dnf copr enable -y ftweedal/freeipa
+RUN dnf copr enable -y mreynolds/389-ds-base
 RUN git config --global user.email "freeipa-robot@redhat.com"
 RUN git config --global user.name "Freeipa Bot"
 RUN git clone git://git.fedorahosted.org/git/freeipa.git
@@ -21,6 +23,8 @@ RUN chmod a+x /root/step2.sh
 # Now let's install Freeipa build dependencies
 WORKDIR /root/freeipa
 RUN /root/step1.sh
+RUN pip install --upgrade pylint
 VOLUME /data
+LABEL RUN 'docker run --rm -P -v $HOME/FreeIPA:/data:Z $builder'
 ENTRYPOINT ["/root/step2.sh"]
 EXPOSE 22

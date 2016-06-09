@@ -5,7 +5,7 @@ dnf update -y --enablerepo updates-testing
 rm -rf /data/rpms/$release/*
 cd /root/freeipa
 rm dist/* -rf
-git reset --hard
+git reset --hard $1
 git pull
 # Now let's apply patches
 rm *.patch

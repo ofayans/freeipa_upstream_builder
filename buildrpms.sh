@@ -11,7 +11,7 @@ CONT_NAME=`docker ps -a | grep $builder | awk '{print $NF}'| tail -n 1`
 if [[ -z "$CONT_NAME" ]]
 # The container has not yet been initialized
 then
-  docker run -P -v $HOME/FreeIPA:/data:Z $builder &
+  docker run --rm  -P -v $HOME/FreeIPA:/data:Z $builder &
   sleep 10
   CONT_NAME=`docker ps | grep $builder | awk '{print $NF}'`
 else
@@ -21,5 +21,5 @@ echo "Container name is $CONT_NAME"
 PORT=`docker ps | grep $CONT_NAME | sed -re 's/.*([0-9]{5}).*/\1/'`
 echo "port is $PORT"
 ssh localhost -p $PORT "/root/freeipa/build.sh $revision"
-docker stop $CONT_NAME
-docker rm $CONT_NAME
+docker rm -f $CONT_NAME
+
