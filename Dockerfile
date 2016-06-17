@@ -5,12 +5,8 @@ RUN sed -ir 's/.*ssh_host_ecdsa_key//' /etc/ssh/sshd_config
 ADD .ssh /root/.ssh
 RUN chmod 600 /root/.ssh/authorized_keys
 WORKDIR /root
-RUN dnf copr enable -y mkosek/freeipa-master
-RUN dnf copr enable -y pviktori/pytest-plugins
-RUN dnf copr enable -y simo/jwcrypto
-RUN dnf copr enable -y simo/custodia
-RUN dnf copr enable -y ftweedal/freeipa
-RUN dnf copr enable -y mreynolds/389-ds-base
+RUN dnf copr enable -y pspacek/bind-dyndb-ldap
+RUN dnf copr enable -y @freeipa/freeipa-master
 RUN git config --global user.email "freeipa-robot@redhat.com"
 RUN git config --global user.name "Freeipa Bot"
 RUN git clone git://git.fedorahosted.org/git/freeipa.git
