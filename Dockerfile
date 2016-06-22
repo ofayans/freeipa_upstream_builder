@@ -1,4 +1,4 @@
-FROM fedora:23
+FROM fedora:24
 RUN dnf install -y openssh-server tar git findutils dnf-plugins-core createrepo yum vim
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN sed -ir 's/.*ssh_host_ecdsa_key//' /etc/ssh/sshd_config

@@ -3,7 +3,7 @@
 # Pass integer fedora version as the first parameter
 revision=$1
 
-version=23
+version=24
 builder=f${version}builder
 
 CONT_NAME=`docker ps -a | grep $builder | awk '{print $NF}'| tail -n 1`
